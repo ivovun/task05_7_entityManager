@@ -15,21 +15,10 @@ public class UserController {
 		this.userService = userService;
 	}
 
-//	@Autowired
-//	public void setUserService( UserService userService) {
-//		this.userService = userService;
-//	}
-
 	@GetMapping("/list")
 	public String listUsers(Model model) {
 		model.addAttribute("users", userService.findAll());
 		return "list-users" ;
-	}
-
-	@GetMapping(path = {"/update", "/list/update"})
-	public String showFormUpdate(Model model) {
-		model.addAttribute("user", new User());
-		return "user-form";
 	}
 
 	@GetMapping(path = {"/create", "/list/create"})
@@ -44,19 +33,22 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
+
+	@GetMapping(path = {"/update", "/list/update"})
+	public String showFormForUpdate(@RequestParam("userId") int userId,
+									Model model) {
+		model.addAttribute("user", userService.findOne(userId));
+		return "user-form";
+	}
+
+
 	@PostMapping(path = {"/create", "/list/create"})
 	public String create(@ModelAttribute("user") User user) {
 		userService.create(user);
 		return "redirect:/user/list";
 	}
 
-	@GetMapping("/updateForm")
-	public String showFormForUpdate(@RequestParam("userId") int userId,
-									Model model) {
-		model.addAttribute("user", userService.findOne(userId));
-		return "user-form";
-	}
-	
+
 	@GetMapping("/delete")
 	public String delete(@RequestParam("userId") int userId) {
 		userService.deleteById(userId);
