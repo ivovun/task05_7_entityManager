@@ -37,7 +37,7 @@ public class UserController {
 	public String showFormForUpdate(@RequestParam("userId") int userId,
 									Model model) {
 		model.addAttribute("user", userService.findOne(userId));
-		return "user-form";
+		return "user-form-udpate";
 	}
 
 
