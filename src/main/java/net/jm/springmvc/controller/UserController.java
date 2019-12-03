@@ -22,32 +22,44 @@ public class UserController {
 
 	@GetMapping("/list")
 	public String listUsers(Model model) {
-		model.addAttribute("users", userService.getUsers());
+		model.addAttribute("users", userService.findAll());
 		return "list-users" ;
 	}
 
-	@GetMapping(path = {"/showForm", "/list/showForm"})
-	public String showFormForAdd(Model model) {
+	@GetMapping(path = {"/update", "/list/update"})
+	public String showFormUpdate(Model model) {
 		model.addAttribute("user", new User());
 		return "user-form";
 	}
-	
-	@PostMapping(path = {"/saveUser", "/list/saveUser"})
-	public String saveUser(@ModelAttribute("user") User user) {
-		userService.saveUser(user);
+
+	@GetMapping(path = {"/create", "/list/create"})
+	public String showFormCreate(Model model) {
+		model.addAttribute("user", new User());
+		return "user-form-create";
+	}
+
+	@PostMapping(path = {"/update", "/list/update"})
+	public String update(@ModelAttribute("user") User user) {
+		userService.update(user);
 		return "redirect:/user/list";
 	}
-	
+
+	@PostMapping(path = {"/create", "/list/create"})
+	public String create(@ModelAttribute("user") User user) {
+		userService.create(user);
+		return "redirect:/user/list";
+	}
+
 	@GetMapping("/updateForm")
 	public String showFormForUpdate(@RequestParam("userId") int userId,
 									Model model) {
-		model.addAttribute("user", userService.getUser(userId));
+		model.addAttribute("user", userService.findOne(userId));
 		return "user-form";
 	}
 	
 	@GetMapping("/delete")
-	public String deleteUser(@RequestParam("userId") int userId) {
-		userService.deleteUser(userId);
+	public String delete(@RequestParam("userId") int userId) {
+		userService.deleteById(userId);
 		return "redirect:/user/list";
 	}
 }

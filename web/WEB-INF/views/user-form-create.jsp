@@ -23,7 +23,7 @@
 					<div class="panel-title">Add User</div>
 				</div>
 				<div class="panel-body">
-					<form:form action="update" cssClass="form-horizontal"
+					<form:form action="create" cssClass="form-horizontal"
 						method="post" modelAttribute="user">
 
 						<!-- need to associate this data with user id -->

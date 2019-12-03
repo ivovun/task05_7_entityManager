@@ -11,32 +11,38 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
-	private SessionFactory sessionFactory;
+public class UserDAOImpl extends AbstractJpaDAO<User> implements UserDAO {
 
-//	@Autowired
-	public UserDAOImpl(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	public UserDAOImpl() {
+		super();
 
-	@Override
-	public List<User> getUsers() {
-		return sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+		setClazz(User.class);
 	}
-
-	@Override
-	public void deleteUser(long userId) {
-		Session session = sessionFactory.getCurrentSession();
-		session.delete(session.byId(User.class).load(userId));
-	}
-
-	@Override
-	public void saveUser(User user) {
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
-	}
-
-	@Override
-	public User getUser(long userId) {
-		return sessionFactory.getCurrentSession().get(User.class, userId);
-	}
+//	private SessionFactory sessionFactory;
+//
+////	@Autowired
+//	public UserDAOImpl(SessionFactory sessionFactory) {
+//		this.sessionFactory = sessionFactory;
+//	}
+//
+//	@Override
+//	public List<User> findAll() {
+//		return sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+//	}
+//
+//	@Override
+//	public void delete(long userId) {
+//		Session session = sessionFactory.getCurrentSession();
+//		session.delete(session.byId(User.class).load(userId));
+//	}
+//
+//	@Override
+//	public void update(User user) {
+//		sessionFactory.getCurrentSession().saveOrUpdate(user);
+//	}
+//
+//	@Override
+//	public User findOne(long userId) {
+//		return sessionFactory.getCurrentSession().get(User.class, userId);
+//	}
 }

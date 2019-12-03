@@ -18,7 +18,7 @@
 			<hr />
 
 			<input type="button" value="Add User"
-				onclick="window.location.href='showForm'; return false;"
+				onclick="window.location.href='create'; return false;"
 				class="btn btn-primary" />
 				<br/><br/>
 			<div class="panel panel-info">

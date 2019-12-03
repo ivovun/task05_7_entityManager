@@ -7,12 +7,14 @@ import java.util.Set;
 
 public interface UserService {
 
-    List<User> getUsers();
+    List<User> findAll();
 
-    void saveUser(User user);
+    void update(User user);
 
-    User getUser(long userId);
+    void create(User user);
 
-    void deleteUser(long userId);
+    User findOne(long userId);
+
+    void deleteById(long userId);
 
 }
