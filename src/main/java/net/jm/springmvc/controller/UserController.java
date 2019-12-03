@@ -33,7 +33,6 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
-
 	@GetMapping(path = {"/update", "/list/update"})
 	public String showFormForUpdate(@RequestParam("userId") int userId,
 									Model model) {
@@ -47,7 +46,6 @@ public class UserController {
 		userService.create(user);
 		return "redirect:/user/list";
 	}
-
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam("userId") int userId) {
