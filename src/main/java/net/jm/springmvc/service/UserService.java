@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserService {
-
     List<User> findAll();
 
     void update(User user);

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDAOImpl extends AbstractJpaDAO<User> implements UserDAO {
-
 	public UserDAOImpl() {
 		super();
 		setClazz(User.class);

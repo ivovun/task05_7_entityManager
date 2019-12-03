@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public abstract class AbstractJpaDAO<T extends Serializable> {
-
     private Class<T> clazz;
 
     @PersistenceContext

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = { "net.jm.springmvc" })
 public class WebMvcConfig implements WebMvcConfigurer{
-
 	@Bean
 	public InternalResourceViewResolver resolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
